@@ -1,0 +1,7 @@
+<%= form_for (@user url: user_registration_path) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :password %>
+<%= f.text_field :encrypted_password %>
+<%= f.submit 'Submit'%>
+<% end %>

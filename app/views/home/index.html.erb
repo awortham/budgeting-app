@@ -3,7 +3,14 @@
     <title>Welcome to BudgetMaster</title>
   </head>
   <body>
-    <%= link_to 'Create Account', new_user_path %>
+    <% if current_user %>
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+      <%= link_to 'Change Password', edit_user_password_path %>
+      <%= link_to 'My Accounts', accounts_path %>
+    <% else %>
+      <%= link_to 'Create Account', new_user_registration_path %>
+      <%= link_to 'Sign In', user_session_path %>
+    <% end %>
 
   </body>
 </html>

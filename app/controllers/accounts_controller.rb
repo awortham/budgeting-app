@@ -8,7 +8,14 @@ class AccountsController < ApplicationController
   end
 
   def create
+    account = current_user.accounts.create(account_params)
+    if account.valid?
+      redirect_to accounts_path
+    end
+  end
 
-    redirect_to accounts_path(current_user)
+  private
+  def account_params
+    params.require(:account).permit(:name)
   end
 end

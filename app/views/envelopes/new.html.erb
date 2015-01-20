@@ -1,4 +1,4 @@
-<%= form_for @envelope do |f| %>
+<%= form_for [@account, @envelope] do |f| %>
 <%= f.label 'Name' %>
 <%= f.text_field :name %>
 <%= f.label 'Amount' %>

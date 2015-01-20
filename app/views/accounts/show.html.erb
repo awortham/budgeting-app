@@ -1,8 +1,8 @@
 <%= @account.name %>
 <% unless @account.envelopes.empty? %>
   <% @account.envelopes.each do |envelope| %>
-    <%= link_to envelope.name, envelope_path(envelope) %>
+    <%= link_to envelope.name, account_envelope_path(envelope) %>
   <% end %>
 <% end %>
 
-<%= link_to 'Create New Envelope', new_envelope_path %>
+<%= link_to 'Create New Envelope', new_account_envelope_path(@account) %>

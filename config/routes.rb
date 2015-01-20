@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :envelopes
 
   devise_for :users
-  resources :accounts
+
+  resources :accounts do
+    resources :envelopes
+  end
+  
   resources :home, only: [:index]
   root 'home#index'
   resources :users

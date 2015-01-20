@@ -18,6 +18,7 @@ gem 'database_cleaner'
 gem 'devise'
 gem 'pry'
 gem 'pry-rails'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

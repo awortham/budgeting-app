@@ -1,7 +1,7 @@
 <%= @account.name %>
 <% unless @account.envelopes.empty? %>
   <% @account.envelopes.each do |envelope| %>
-    <%= link_to envelope.name, account_envelope_path(envelope) %>
+    <%= link_to envelope.name, account_envelope_path(@account, envelope) %>
   <% end %>
 <% end %>
 

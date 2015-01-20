@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :accounts do
     resources :envelopes
   end
-  
+
   resources :home, only: [:index]
-  root 'home#index'
+  root 'home#index', as: 'home'
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

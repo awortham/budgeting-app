@@ -1,6 +1,6 @@
 <% unless @accounts.empty? %>
   <% @accounts.each do |account| %>
-  <%= account.name %>
+  <%= link_to account.name, account_path(account) %>
   <% end %>
 <% end %>
 

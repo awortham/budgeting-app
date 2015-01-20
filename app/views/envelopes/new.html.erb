@@ -1,0 +1,9 @@
+<%= form_for @envelope do |f| %>
+<%= f.label 'Name' %>
+<%= f.text_field :name %>
+<%= f.label 'Amount' %>
+<%= f.text_field :amount %>
+<%= f.label 'Percentage' %>
+<%= f.text_field :percentage %>
+<%= f.submit 'Submit' %>
+<% end %>

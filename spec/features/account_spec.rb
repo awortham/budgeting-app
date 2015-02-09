@@ -12,4 +12,16 @@ describe 'account actions' do
     visit accounts_path
     expect(current_path).to eq accounts_path
   end
+
+  it 'shows the my dashboard link if logged in' do
+    user = create(:user)
+    page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
+    visit home_path
+    expect(page).to have_content "My Dashboard"
+  end
+
+  it 'does not show the dashboard link if not logged in' do
+    visit home_path
+    expect(page).to_not have_content "My Dashboard"
+  end
 end

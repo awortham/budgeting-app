@@ -4,6 +4,7 @@
   </head>
   <body>
     <% if current_user %>
+      <%= link_to 'My Dashboard', accounts_path %>
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
       <%= link_to 'Change Password', edit_user_password_path %>
       <%= link_to 'My Accounts', accounts_path %>

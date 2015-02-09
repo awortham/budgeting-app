@@ -37,6 +37,10 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :test do
+  gem 'launchy'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

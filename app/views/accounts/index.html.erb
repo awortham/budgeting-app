@@ -1,7 +1,6 @@
+<%= link_to "Sign Out", destroy_user_session_path(current_user), method: :delete %>
 <% unless @accounts.empty? %>
   <% @accounts.each do |account| %>
   <%= link_to account.name, account_path(account) %>
   <% end %>
 <% end %>
-
-<%= link_to 'Create New Account', new_account_path %>

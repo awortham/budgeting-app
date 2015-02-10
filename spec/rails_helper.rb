@@ -30,7 +30,7 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryGirl::Syntax::Methods
-  
+
   # additional factory_girl configuration
 
   config.before(:suite) do
@@ -72,4 +72,9 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  def create_user_and_log_in
+    user = create(:user)
+    page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
+  end
 end

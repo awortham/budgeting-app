@@ -25,13 +25,17 @@ describe 'account actions' do
     expect(page).to_not have_content "My Accounts"
   end
 
-  it 'shows the account name from the account index' do
+  it 'shows the account name from the account index by user' do
     user = create(:user)
+    user2 = User.create(name: "Aaron", email: 'rock@solid.com', password: 'rockmyworld')
     account = create(:account)
+    account2 = create(:account, name: 'Savings')
     user.accounts << account
+    user2.accounts << account2
     page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
 
     visit accounts_path
     expect(page).to have_content account.name
+    expect(page).to_not have_content account2.name
   end
 end

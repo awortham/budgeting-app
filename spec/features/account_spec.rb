@@ -24,4 +24,14 @@ describe 'account actions' do
     visit home_path
     expect(page).to_not have_content "My Accounts"
   end
+
+  it 'shows the account name from the account index' do
+    user = create(:user)
+    account = create(:account)
+    user.accounts << account
+    page.set_rack_session("warden.user.user.key" => User.serialize_into_session(user).unshift("User"))
+
+    visit accounts_path
+    expect(page).to have_content account.name
+  end
 end

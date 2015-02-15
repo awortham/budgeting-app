@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
-  
+
   def new
     @account = Account.new
   end
@@ -21,6 +21,7 @@ class AccountsController < ApplicationController
   end
 
   private
+
   def account_params
     params.require(:account).permit(:name)
   end

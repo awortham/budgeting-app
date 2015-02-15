@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119220637) do
+ActiveRecord::Schema.define(version: 20150215195736) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
     t.string   "user_id"
-    t.decimal  "balance"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "balance",    default: 0.0
   end
 
   create_table "envelopes", force: true do |t|

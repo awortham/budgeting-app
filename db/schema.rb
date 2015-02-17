@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217203958) do
+ActiveRecord::Schema.define(version: 20150217204325) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 20150217203958) do
 
   create_table "envelopes", force: true do |t|
     t.string   "name"
-    t.decimal  "amount"
-    t.decimal  "percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "account_id"
     t.decimal  "balance",    default: 0.0
+    t.decimal  "amount",     default: 0.0
+    t.decimal  "percentage", default: 0.0
   end
 
   create_table "users", force: true do |t|

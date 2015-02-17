@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20150217204325) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "account_id"
-    t.decimal  "balance",    default: 0.0
-    t.decimal  "amount",     default: 0.0
-    t.decimal  "percentage", default: 0.0
+    t.decimal  "balance",             default: 0.0
+    t.decimal  "budgeted_amount",     default: 0.0
+    t.decimal  "budgeted_percentage", default: 0.0
   end
 
   create_table "users", force: true do |t|

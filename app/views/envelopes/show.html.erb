@@ -1,1 +1,11 @@
 <%= @envelope.name %>
+
+<% if @envelope.budgeted_percentage == 0.0 %>
+  <h3>Budgeted Amount</h3>
+  <%= number_to_currency(@envelope.budgeted_amount) %>
+<% else %>
+  <h3>Budgeted Percentage</h3>
+  <%= number_to_currency(@envelope.budgeted_percentage) %>
+<% end %>
+<h3>Balance</h3>
+<%= number_to_currency(@envelope.balance) %>

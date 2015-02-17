@@ -1,9 +1,11 @@
-<%= @account.name %>
+<%= link_to 'Create New Envelope', new_account_envelope_path(@account) %>
+
+<h2><%= @account.name %></h2>
 <% unless @account.envelopes.empty? %>
   <% @account.envelopes.each do |envelope| %>
+    <h3>Envelope Name</h3>
     <%= link_to envelope.name, account_envelope_path(@account, envelope) %>
-    <%= link_to envelope %>
+    <h3>Envelope Balance</h3>
+    <%= number_to_currency(envelope.balance) %>
   <% end %>
 <% end %>
-
-<%= link_to 'Create New Envelope', new_account_envelope_path(@account) %>

@@ -8,11 +8,13 @@ class Envelope < ActiveRecord::Base
   private
 
   def amount_xor_percentage
-    columns = [budgeted_amount, budgeted_percentage]
-    checker = columns.reduce([]) { |acc, column| acc << column if column > 0; acc }
-
     if checker.count != 1
       errors.add(:base, "Please specify either amount or percentage but not both.")
     end
+  end
+
+  def checker
+    columns = [budgeted_amount, budgeted_percentage]
+    columns.reduce([]) { |acc, column| acc << column if column > 0; acc }
   end
 end

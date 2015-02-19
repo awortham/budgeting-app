@@ -35,12 +35,12 @@ class EnvelopesController < ApplicationController
       redirect_to account_envelope_path(account, @envelope)
     else
       flash[:notice] = "Envelope was not updated"
-      redirect_to back
+      redirect_to :back
     end
   end
 
   private
   def envelope_params
-    params.require(:envelope).permit(:name, :amount, :percentage)
+    params.require(:envelope).permit(:name, :budgeted_amount, :budgeted_percentage)
   end
 end

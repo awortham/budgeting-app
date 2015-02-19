@@ -10,6 +10,8 @@ class Envelope < ActiveRecord::Base
   def amount_or_percentage
     if checker.count != 1
       errors.add(:notice, "Please specify either amount or percentage but not both.")
+    else
+      return true
     end
   end
 

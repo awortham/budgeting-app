@@ -5,7 +5,9 @@
   <% @account.envelopes.each do |envelope| %>
     <h3>Envelope Name</h3>
     <%= link_to envelope.name, account_envelope_path(@account, envelope) %>
-    <h3>Envelope Balance</h3>
+    <p>Envelope Balance</p>
     <%= number_to_currency(envelope.balance) %>
   <% end %>
 <% end %>
+
+<%= link_to "Edit Account", edit_account_path(@account) %>

@@ -40,6 +40,7 @@ class EnvelopesController < ApplicationController
   end
 
   private
+
   def envelope_params
     params.require(:envelope).permit(:name, :budgeted_amount, :budgeted_percentage)
   end

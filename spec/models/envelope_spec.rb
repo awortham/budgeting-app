@@ -31,7 +31,7 @@ RSpec.describe Envelope, :type => :model do
       expect(e2).to_not be_valid
     end
 
-    xit 'requires either amount or percentage' do
+    it 'requires either amount or percentage' do
       e = Envelope.new(name: "Truck Fund")
       expect(e).to_not be_valid
       e2 = Envelope.new(name: "Truck Fund", budgeted_amount: 20)
@@ -40,7 +40,7 @@ RSpec.describe Envelope, :type => :model do
       expect(e3).to be_valid
     end
 
-    xit 'does not create envelope with both percentage and amount' do
+    it 'does not create envelope with both percentage and amount' do
       e = Envelope.new(name: "Truck Fund", budgeted_percentage: 0.20, budgeted_amount: 20)
       expect(e).to_not be_valid
     end

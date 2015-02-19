@@ -1,0 +1,9 @@
+<%= form_for [@account, @envelope] do |f| %>
+<%= f.label 'Name' %>
+<%= f.text_field :name %>
+<%= f.label 'Amount' %>
+<%= f.text_field :budgeted_amount %>
+<%= f.label 'Percentage' %>
+<%= f.text_field :budgeted_percentage %>
+<%= f.submit 'Submit Changes' %>
+<% end %>

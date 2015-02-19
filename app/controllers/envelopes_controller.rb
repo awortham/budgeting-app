@@ -21,6 +21,24 @@ class EnvelopesController < ApplicationController
     @envelope = account.envelopes.find(params[:id])
   end
 
+  def edit
+    @account = current_user.accounts.find(params[:account_id])
+    @envelope = @account.envelopes.find(params[:id])
+  end
+
+  def update
+    account = current_user.accounts.find(params[:account_id])
+    @envelope = account.envelopes.find(params[:id])
+    @envelope.assign_attributes(envelope_params)
+    if @envelope.save
+      flash[:notice] = "Envelope Updated"
+      redirect_to account_envelope_path(account, @envelope)
+    else
+      flash[:notice] = "Envelope was not updated"
+      redirect_to back
+    end
+  end
+
   private
   def envelope_params
     params.require(:envelope).permit(:name, :amount, :percentage)

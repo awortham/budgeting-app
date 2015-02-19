@@ -8,6 +8,9 @@
 </head>
 <body>
   <%= link_to 'Home', home_path %>
+  <% if current_user && !current_page?(accounts_path) %>
+    <%= link_to 'My Accounts', accounts_path %>
+  <% end %>
 <%= yield %>
 
 </body>

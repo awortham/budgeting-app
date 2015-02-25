@@ -17,11 +17,11 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @account = current_user.accounts.find(params[:id])
+    @account = find_account(params[:id])
   end
 
   def edit
-    @account = current_user.accounts.find(params[:id])
+    @account = find_account(params[:id])
   end
 
   def update

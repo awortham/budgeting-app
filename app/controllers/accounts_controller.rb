@@ -40,7 +40,7 @@ class AccountsController < ApplicationController
     account = find_account(params[:id])
     account.assign_attributes(balance: add_balance(account))
     if account.save
-      redirect_to accounts_path
+      redirect_to account_path(account)
     else
       redirect_to :back
     end
@@ -50,7 +50,7 @@ class AccountsController < ApplicationController
     account = find_account(params[:id])
     account.assign_attributes(balance: subtract_balance(account))
     if account.save
-      redirect_to accounts_path
+      redirect_to account_path(account)
     else
       redirect_to :back
     end

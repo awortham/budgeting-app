@@ -25,7 +25,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    account = current_user.accounts.find(params[:id])
+    account = find_account(params[:id])
     account.assign_attributes(account_params)
     if account.save
       flash[:notice] = 'You have updated your Account'
@@ -38,8 +38,17 @@ class AccountsController < ApplicationController
 
   def deposit
     account = find_account(params[:id])
-    new_balance = account.balance += params[:account][:balance].to_f
-    account.assign_attributes(balance: new_balance)
+    account.assign_attributes(balance: add_balance(account))
+    if account.save
+      redirect_to accounts_path
+    else
+      redirect_to :back
+    end
+  end
+
+  def withdrawal
+    account = find_account(params[:id])
+    account.assign_attributes(balance: subtract_balance(account))
     if account.save
       redirect_to accounts_path
     else
@@ -49,12 +58,16 @@ class AccountsController < ApplicationController
 
   private
 
-  def find_account(id)
-    current_user.accounts.find(id)
+  def add_balance(account)
+    account.balance += params[:account][:balance].to_f
   end
 
-  def deposit_or_withdrawal_params
-    params.require(:account).permit(:balance)
+  def subtract_balance(account)
+    account.balance -= params[:account][:balance].to_f
+  end
+
+  def find_account(id)
+    current_user.accounts.find(id)
   end
 
   def account_params

@@ -16,9 +16,9 @@
 <% end %>
 
 <h2>Make Deposit</h2>
-<%= form_for @account do |f| %>
+<%= form_for @account, url: deposit_path(@account) do |f| %>
   <%= f.label "Deposit Amount of"%>
-  <%= f.text_field :balance %>
+  <%= f.text_field :balance, autofocus: true, value: 'Amount' %>
   <%= f.submit "into my #{@account.name} account"%>
 <% end %>
 

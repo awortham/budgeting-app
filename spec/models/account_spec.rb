@@ -22,4 +22,11 @@ RSpec.describe Account, :type => :model do
     account = Account.new(name: "Awesome")
     expect(account).to be_valid
   end
+
+  xit 'disperses a deposit into multiple envelopes' do
+    account = create(:account)
+    e1 = create(:envelope)
+    e2 = create(:envelope, name: "mortgage", budgeted_amount: 500)
+    account.envelopes << [e1, e2]
+  end
 end

@@ -36,9 +36,28 @@ class AccountsController < ApplicationController
     end
   end
 
+  def deposit
+    account = find_account(params[:id])
+    new_balance = account.balance += params[:account][:balance].to_f
+    account.assign_attributes(balance: new_balance)
+    if account.save
+      redirect_to accounts_path
+    else
+      redirect_to :back
+    end
+  end
+
   private
 
+  def find_account(id)
+    current_user.accounts.find(id)
+  end
+
+  def deposit_or_withdrawal_params
+    params.require(:account).permit(:balance)
+  end
+
   def account_params
-    params.require(:account).permit(:name, :balance)
+    params.require(:account).permit(:name)
   end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :accounts do
     resources :envelopes
   end
+  patch '/accounts/:id/deposit' => 'accounts#deposit', as: 'deposit'
 
   resources :home, only: [:index]
   root 'home#index', as: 'home'

@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe User, :type => :model do
   before do
     @user = create(:user)
-    @account = create(:account, user_id: 1)
+    @account = create(:account)
+    @user.accounts << @account
   end
 
   it 'is valid' do

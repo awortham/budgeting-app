@@ -22,4 +22,11 @@
   <%= f.submit "into my #{@account.name} account"%>
 <% end %>
 
+<h2>Make Withdrawal</h2>
+<%= form_for @account, url: withdrawal_path(@account) do |f| %>
+  <%= f.label "Withdraw Amount of"%>
+  <%= f.text_field :balance, autofocus: true, value: 'Amount' %>
+  <%= f.submit "from my #{@account.name} account"%>
+<% end %>
+
 <%= link_to "Edit Account", edit_account_path(@account) %>

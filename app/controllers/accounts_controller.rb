@@ -59,11 +59,11 @@ class AccountsController < ApplicationController
   private
 
   def add_balance(account)
-    account.balance += params[:account][:balance].to_f
+    account.balance += params[:account][:balance].to_d
   end
 
   def subtract_balance(account)
-    account.balance -= params[:account][:balance].to_f
+    account.balance -= params[:account][:balance].to_d
   end
 
   def find_account(id)

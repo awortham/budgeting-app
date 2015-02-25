@@ -2,11 +2,13 @@ class Account < ActiveRecord::Base
   validates_presence_of :name
   belongs_to :user
   has_many :envelopes
-  after_save :disperse_envelopes if :balance_changed?
+  after_update :disperse_envelopes if :balance_changed?
 
   private
 
   def disperse_envelopes
+    require 'pry'
+    binding.pry
     envelopes.each do |envelope|
       if envelope.percentage_zero?
         envelope.balance += envelope.budgeted_amount

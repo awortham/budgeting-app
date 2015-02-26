@@ -1,4 +1,4 @@
-<%= @envelope.name %>
+<h2><%= @envelope.name %></h2>
 
 <% if @envelope.budgeted_percentage == 0.0 %>
   <h3>Budgeted Amount</h3>
@@ -9,5 +9,7 @@
 <% end %>
 <h3>Balance</h3>
 <%= number_to_currency(@envelope.balance) %>
+<h3>Max Amount</h3>
+<%= number_to_currency(@envelope.max) %>
 
 <%= link_to "Edit Envelope", edit_account_envelope_path(@envelope.account, @envelope) %>

@@ -51,6 +51,8 @@ RSpec.describe Envelope, :type => :model do
     end
 
     it 'balance cannot exceed the max amount column' do
+      e = create(:envelope, max: 50, balance: 60)
+      expect(e.balance.to_i).to eq 50
     end
   end
 end

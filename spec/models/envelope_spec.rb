@@ -44,5 +44,13 @@ RSpec.describe Envelope, :type => :model do
       e = Envelope.new(name: "Truck Fund", budgeted_percentage: 0.20, budgeted_amount: 20)
       expect(e).to_not be_valid
     end
+
+    it 'has a max amount column' do
+      e = create(:envelope, max: 50)
+      expect(e).to be_valid
+    end
+
+    it 'balance cannot exceed the max amount column' do
+    end
   end
 end

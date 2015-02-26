@@ -54,5 +54,10 @@ RSpec.describe Envelope, :type => :model do
       e = create(:envelope, max: 50, balance: 60)
       expect(e.balance.to_i).to eq 50
     end
+
+    it 'can have any size of balance if max is nil' do
+      e = create(:envelope, balance: 7000)
+      expect(e.balance.to_i).to eq 7000
+    end
   end
 end

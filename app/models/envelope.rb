@@ -5,10 +5,6 @@ class Envelope < ActiveRecord::Base
   validate :amount_or_percentage
   belongs_to :account
 
-  def percentage_zero?
-    budgeted_percentage == 0
-  end
-
   private
 
   def amount_or_percentage

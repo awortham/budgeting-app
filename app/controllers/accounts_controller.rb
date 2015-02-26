@@ -38,7 +38,7 @@ class AccountsController < ApplicationController
 
   def deposit
     account = find_account(params[:id])
-    account.balance += balance_params
+    account.make_deposit(balance_params)
     if account.save
       redirect_to account_path(account)
     else
@@ -48,7 +48,7 @@ class AccountsController < ApplicationController
 
   def withdrawal
     account = find_account(params[:id])
-    account.balance -= balance_params
+    account.make_withdrawal(balance_params)
     if account.save
       redirect_to account_path(account)
     else

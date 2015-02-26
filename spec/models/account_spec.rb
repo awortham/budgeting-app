@@ -33,7 +33,7 @@ RSpec.describe Account, :type => :model do
     a.balance += 1000
     a.save
     expect(a.balance).to eq 1000
-    expect(e1.balance).to eq 99.99
+    expect(e1.balance.to_f).to eq 99.99
     expect(e2.balance).to eq 250
   end
 end
